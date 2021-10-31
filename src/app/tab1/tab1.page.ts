@@ -1,3 +1,5 @@
+import { MovieService } from './../service/movie.service';
+import { Pelicula, RespuestaMDB } from '../interfaces/interface';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +9,16 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  peliculasRecientes: Pelicula[]=[];
+
+  constructor(private movieService: MovieService) {}
+
+  ngOnInit() {
+    this.movieService.getMovies()
+    .subscribe( (resp: RespuestaMDB) => {
+      console.log('Resp', resp);
+      this.peliculasRecientes = resp.results;
+    })
+  }
 
 }
