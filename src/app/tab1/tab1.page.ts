@@ -11,6 +11,11 @@ export class Tab1Page {
 
   peliculasRecientes: Pelicula[]=[];
 
+  slideOpts = {
+    slidePerView: 1.1,
+    freeMode: true
+  }
+
   constructor(private movieService: MovieService) {}
 
   ngOnInit() {
